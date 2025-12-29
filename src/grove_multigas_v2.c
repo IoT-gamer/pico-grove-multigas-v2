@@ -22,7 +22,7 @@ static uint32_t _read_sensor_metric(uint8_t cmd) {
     if (ret < 0) return 0; // Error
 
     // 2. Wait for conversion (Arduino library uses delay)
-    sleep_ms(2); 
+    busy_wait_us(2000); // Delay safe for IRQ/Timer
 
     // 3. Read 4 bytes (uint32_t)
     uint8_t buffer[4];
